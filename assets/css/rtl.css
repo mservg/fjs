@@ -1,0 +1,280 @@
+/* RTL (Right-to-Left) Styles for Jocelyne Saab Design Theme */
+
+/* ===== RTL OVERRIDES ===== */
+
+/* Text direction */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Typography */
+.rtl h1, .rtl h2, .rtl h3, .rtl h4, .rtl h5, .rtl h6 {
+    text-align: right;
+}
+
+/* Layout adjustments */
+.rtl .container {
+    direction: rtl;
+}
+
+/* Navigation */
+.rtl .main-navigation ul {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.rtl .main-navigation li {
+    float: right;
+}
+
+.rtl .main-navigation .sub-menu {
+    right: 0;
+    left: auto;
+}
+
+.rtl .main-navigation .sub-menu .sub-menu {
+    right: 100%;
+    left: auto;
+}
+
+/* Cards */
+.rtl .card-enhanced-content {
+    text-align: right;
+}
+
+.rtl .card-enhanced-meta {
+    justify-content: flex-end;
+}
+
+.rtl .card-enhanced-actions {
+    justify-content: flex-end;
+}
+
+/* Buttons */
+.rtl .btn-enhanced {
+    text-align: right;
+}
+
+.rtl .btn-enhanced i {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* Filters */
+.rtl .filters-header {
+    flex-direction: row-reverse;
+}
+
+.rtl .filter-buttons {
+    justify-content: flex-end;
+}
+
+.rtl .search-input-group {
+    flex-direction: row-reverse;
+}
+
+.rtl .search-btn {
+    right: auto;
+    left: 0.5rem;
+}
+
+.rtl .search-input {
+    padding-left: 3rem;
+    padding-right: 1rem;
+}
+
+/* Results info */
+.rtl .results-info {
+    flex-direction: row-reverse;
+}
+
+/* Pagination */
+.rtl .pagination-enhanced .page-numbers {
+    flex-direction: row-reverse;
+}
+
+.rtl .pagination-enhanced .prev {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+.rtl .pagination-enhanced .next {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* Breadcrumbs */
+.rtl .breadcrumb-list {
+    flex-direction: row-reverse;
+}
+
+.rtl .breadcrumb-item:not(:last-child)::after {
+    content: '\\';
+    margin-left: 0;
+    margin-right: var(--space-10);
+}
+
+/* Hero section */
+.rtl .hero-enhanced-content {
+    text-align: right;
+}
+
+.rtl .hero-actions {
+    justify-content: flex-end;
+}
+
+/* Social sharing */
+.rtl .social-sharing-buttons {
+    justify-content: flex-end;
+}
+
+/* Language switcher */
+.rtl .language-switcher {
+    direction: rtl;
+}
+
+.rtl .language-dropdown {
+    right: 0;
+    left: auto;
+}
+
+/* Search results */
+.rtl .search-results-section {
+    text-align: right;
+}
+
+.rtl .search-suggestions {
+    text-align: right;
+}
+
+/* Related content */
+.rtl .related-content-section {
+    text-align: right;
+}
+
+/* PDF export */
+.rtl .pdf-export {
+    text-align: right;
+}
+
+/* ===== RTL SPECIFIC ADJUSTMENTS ===== */
+
+/* Arabic typography improvements */
+.rtl {
+    font-family: 'Noto Sans Arabic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* RTL specific spacing */
+.rtl .card-enhanced-meta span {
+    margin-left: 0;
+    margin-right: var(--space-20);
+}
+
+.rtl .card-enhanced-meta span:last-child {
+    margin-right: 0;
+}
+
+/* RTL form elements */
+.rtl input[type="text"],
+.rtl input[type="email"],
+.rtl input[type="search"],
+.rtl textarea,
+.rtl select {
+    text-align: right;
+}
+
+/* RTL icons positioning */
+.rtl .card-enhanced-meta i {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
+
+/* RTL animations */
+.rtl .card-enhanced:hover {
+    transform: translateY(-4px) scaleX(-1);
+}
+
+/* RTL responsive adjustments */
+@media (max-width: 768px) {
+    .rtl .filters-header {
+        flex-direction: column;
+    }
+    
+    .rtl .results-info {
+        flex-direction: column;
+    }
+    
+    .rtl .hero-actions {
+        justify-content: center;
+    }
+}
+
+/* RTL print styles */
+@media print {
+    .rtl {
+        direction: rtl;
+        text-align: right;
+    }
+    
+    .rtl .card-enhanced-content {
+        text-align: right;
+    }
+    
+    .rtl .meta-item {
+        text-align: right;
+    }
+}
+
+/* ===== RTL UTILITY CLASSES ===== */
+
+.rtl .text-left { text-align: right; }
+.rtl .text-right { text-align: left; }
+
+.rtl .float-left { float: right; }
+.rtl .float-right { float: left; }
+
+.rtl .ml-auto { margin-left: 0; margin-right: auto; }
+.rtl .mr-auto { margin-right: 0; margin-left: auto; }
+
+.rtl .pl-0 { padding-left: 0; }
+.rtl .pr-0 { padding-right: 0; }
+
+/* ===== RTL COMPONENT OVERRIDES ===== */
+
+/* Enhanced buttons in RTL */
+.rtl .btn-enhanced::before {
+    left: 100%;
+    right: -100%;
+}
+
+.rtl .btn-enhanced:hover::before {
+    left: -100%;
+    right: 100%;
+}
+
+/* RTL loading animations */
+.rtl .loading-spinner {
+    animation: spin-rtl 1s linear infinite;
+}
+
+@keyframes spin-rtl {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-360deg); }
+}
+
+/* RTL fade animations */
+.rtl .animate-fade-in-up {
+    animation: fadeInUpRTL 0.6s ease-out;
+}
+
+@keyframes fadeInUpRTL {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scaleX(-1);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scaleX(-1);
+    }
+} 

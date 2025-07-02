@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carousel Test</title>
+    <style>
+        .news-carousel-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .news-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 2rem;
+            padding: 1rem 0;
+            width: 100%;
+            scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
+            scroll-behavior: smooth;
+        }
+        .news-carousel::-webkit-scrollbar { 
+            display: none; 
+        }
+        .news-card {
+            position: relative;
+            flex: 0 0 340px;
+            height: 420px;
+            background: #181818;
+            border-radius: 28px;
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            scroll-snap-align: start;
+            transition: box-shadow 0.2s;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 48px;
+            height: 48px;
+            background: rgba(24,24,24,0.85);
+            border: 2px solid #FFD6DE;
+            border-radius: 50%;
+            color: #FFD6DE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: background 0.2s, border 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+        .carousel-arrow-left { left: -24px; }
+        .carousel-arrow-right { right: -24px; }
+        .carousel-arrow:after {
+            content: '';
+            display: block;
+            width: 0.7em;
+            height: 0.7em;
+            border: solid #FFD6DE;
+            border-width: 0 0.18em 0.18em 0;
+            padding: 0.18em;
+        }
+        .carousel-arrow-left:after { transform: rotate(135deg); margin-left: 0.2em; }
+        .carousel-arrow-right:after { transform: rotate(-45deg); margin-right: 0.2em; }
+        .carousel-arrow:active, .carousel-arrow:focus { background: #FFD6DE; color: #181818; outline: none; }
+    </style>
+</head>
+<body>
+    <div class="news-carousel-wrapper">
+        <button class="carousel-arrow carousel-arrow-left" aria-label="Previous News"></button>
+        <div class="news-carousel" id="news-carousel">
+            <div class="news-card">
+                <div style="background: #333; height: 200px; display: flex; align-items: center; justify-content: center; color: white;">Card 1</div>
+                <div style="padding: 1rem;">
+                    <h3>News Title 1</h3>
+                    <p>This is the first news card content.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div style="background: #333; height: 200px; display: flex; align-items: center; justify-content: center; color: white;">Card 2</div>
+                <div style="padding: 1rem;">
+                    <h3>News Title 2</h3>
+                    <p>This is the second news card content.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div style="background: #333; height: 200px; display: flex; align-items: center; justify-content: center; color: white;">Card 3</div>
+                <div style="padding: 1rem;">
+                    <h3>News Title 3</h3>
+                    <p>This is the third news card content.</p>
+                </div>
+            </div>
+            <div class="news-card">
+                <div style="background: #333; height: 200px; display: flex; align-items: center; justify-content: center; color: white;">Card 4</div>
+                <div style="padding: 1rem;">
+                    <h3>News Title 4</h3>
+                    <p>This is the fourth news card content.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-arrow carousel-arrow-right" aria-label="Next News"></button>
+    </div>
+
+    <script>
+        function initCarouselArrows() {
+            console.log('Initializing carousel arrows...');
+            const carousel = document.getElementById('news-carousel');
+            const leftArrow = document.querySelector('.carousel-arrow-left');
+            const rightArrow = document.querySelector('.carousel-arrow-right');
+            
+            console.log('Carousel:', carousel);
+            console.log('Left arrow:', leftArrow);
+            console.log('Right arrow:', rightArrow);
+            
+            if (carousel && leftArrow && rightArrow) {
+                function scrollCarousel(dir) {
+                    const card = carousel.querySelector('.news-card');
+                    if (!card) {
+                        console.log('No news card found');
+                        return;
+                    }
+                    const scrollAmount = card.offsetWidth + 32; // 32px gap
+                    console.log('Scrolling by:', dir * scrollAmount);
+                    carousel.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+                }
+                
+                leftArrow.addEventListener('click', () => {
+                    console.log('Left arrow clicked');
+                    scrollCarousel(-1);
+                });
+                rightArrow.addEventListener('click', () => {
+                    console.log('Right arrow clicked');
+                    scrollCarousel(1);
+                });
+                
+                console.log('Carousel arrows initialized successfully');
+            } else {
+                console.log('Carousel arrows not found - elements missing');
+            }
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', initCarouselArrows);
+    </script>
+</body>
+</html> 
