@@ -146,27 +146,38 @@ a:focus {
 }
 
 .section-white {
-  background: linear-gradient(135deg, var(--brand-white) 0%, #f8f9fa 100%);
-  color: var(--brand-midnight);
+  background: var(--primary-white);
+  color: var(--primary-black);
   padding: 4rem 0;
 }
 
 .section-cream {
-  background: linear-gradient(135deg, var(--brand-cream) 0%, #f5f5f0 100%);
-  color: var(--brand-midnight);
+  background: var(--primary-gray);
+  color: var(--primary-black);
   padding: 4rem 0;
 }
 
 .section-dark {
-  background: linear-gradient(135deg, var(--brand-midnight) 0%, #1a1a2e 100%);
-  color: var(--brand-white);
+  background: var(--primary-black);
+  color: var(--primary-white);
   padding: 4rem 0;
 }
 
 .section-gradient {
-  background: linear-gradient(135deg, var(--brand-yellow) 0%, var(--brand-blue) 100%);
-  color: var(--brand-white);
+  background: var(--primary-black);
+  color: var(--primary-white);
   padding: 4rem 0;
+  position: relative;
+}
+
+.section-gradient::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-yellow) 100%);
 }
 
 .section + .section {
@@ -2432,28 +2443,31 @@ body > .hero.archive-hero:first-child {
 .films-carousel .swiper-button-prev,
 .workshops-carousel .swiper-button-next,
 .workshops-carousel .swiper-button-prev {
-    width: 40px;
-    height: 40px;
-    background: var(--brand-midnight);
-    border: 2px solid var(--brand-yellow);
+    width: 44px;
+    height: 44px;
+    background: var(--primary-white);
+    border: 2px solid var(--primary-black);
     border-radius: 50%;
-    color: var(--brand-yellow);
-    transition: all var(--transition-fast);
+    color: var(--primary-black);
+    transition: all var(--transition-normal);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .films-carousel .swiper-button-next:hover,
 .films-carousel .swiper-button-prev:hover,
 .workshops-carousel .swiper-button-next:hover,
 .workshops-carousel .swiper-button-prev:hover {
-    background: var(--brand-yellow);
-    color: var(--brand-midnight);
+    background: var(--accent-blue);
+    color: var(--primary-white);
+    border-color: var(--accent-blue);
+    transform: scale(1.1);
 }
 
 .films-carousel .swiper-button-next::after,
 .films-carousel .swiper-button-prev::after,
 .workshops-carousel .swiper-button-next::after,
 .workshops-carousel .swiper-button-prev::after {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -2466,18 +2480,20 @@ body > .hero.archive-hero:first-child {
 
 .films-carousel .swiper-pagination-bullet,
 .workshops-carousel .swiper-pagination-bullet {
-    width: 12px;
-    height: 12px;
-    background: var(--gray-medium);
-    opacity: 0.5;
-    transition: all var(--transition-fast);
+    width: 10px;
+    height: 10px;
+    background: var(--primary-gray);
+    opacity: 0.6;
+    transition: all var(--transition-normal);
+    border: 1px solid var(--primary-black);
 }
 
 .films-carousel .swiper-pagination-bullet-active,
 .workshops-carousel .swiper-pagination-bullet-active {
-    background: var(--brand-yellow);
+    background: var(--accent-blue);
     opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.3);
+    border-color: var(--accent-blue);
 }
 
 /* Responsive Carousel */
@@ -2564,16 +2580,18 @@ body > .hero.archive-hero:first-child {
 }
 .section-news-carousel {
   position: relative;
-  background: linear-gradient(135deg, var(--brand-white) 0%, #f8f9fa 100%);
-  transition: background-color 0.8s ease-in-out, background-image 0.8s ease-in-out;
+  background: var(--primary-white);
+  transition: background-color 0.8s ease-in-out;
+  padding: 4rem 0;
 }
 
 .section-news-carousel.section-sticky {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: linear-gradient(135deg, var(--brand-white) 0%, #f8f9fa 100%);
+  background: var(--primary-white);
   box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+  border-bottom: 1px solid var(--primary-gray);
 }
 
 .news-carousel-wrapper {
@@ -2599,17 +2617,21 @@ body > .hero.archive-hero:first-child {
   position: relative;
   flex: 0 0 340px;
   height: 420px;
-  background: #181818;
-  border-radius: 28px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.12);
+  background: var(--primary-white);
+  border: 1px solid var(--primary-gray);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   scroll-snap-align: start;
-  transition: box-shadow 0.2s;
+  transition: all 0.3s ease;
 }
+
 .news-card:hover {
-  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.18);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  transform: translateY(-4px);
+  border-color: var(--accent-blue);
 }
 .news-card-image {
   position: relative;
@@ -2671,32 +2693,50 @@ body > .hero.archive-hero:first-child {
   z-index: 10;
   width: 48px;
   height: 48px;
-  background: rgba(24,24,24,0.85);
-  border: 2px solid #FFD6DE;
+  background: var(--primary-white);
+  border: 2px solid var(--primary-black);
   border-radius: 50%;
-  color: #FFD6DE;
+  color: var(--primary-black);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: background 0.2s, border 0.2s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
+.carousel-arrow:hover,
+.carousel-arrow:focus {
+  background: var(--accent-blue);
+  border-color: var(--accent-blue);
+  color: var(--primary-white);
+  transform: translateY(-50%) scale(1.1);
+  outline: none;
+}
+
 .carousel-arrow-left { left: -24px; }
 .carousel-arrow-right { right: -24px; }
+
 .carousel-arrow:after {
   content: '';
   display: block;
-  width: 0.7em;
-  height: 0.7em;
-  border: solid #FFD6DE;
-  border-width: 0 0.18em 0.18em 0;
-  padding: 0.18em;
+  width: 0.6em;
+  height: 0.6em;
+  border: solid currentColor;
+  border-width: 0 2px 2px 0;
+  padding: 0.1em;
 }
-.carousel-arrow-left:after { transform: rotate(135deg); margin-left: 0.2em; }
-.carousel-arrow-right:after { transform: rotate(-45deg); margin-right: 0.2em; }
-.carousel-arrow:active, .carousel-arrow:focus { background: #FFD6DE; color: #181818; outline: none; }
+
+.carousel-arrow-left:after { 
+  transform: rotate(135deg); 
+  margin-left: 0.1em; 
+}
+
+.carousel-arrow-right:after { 
+  transform: rotate(-45deg); 
+  margin-right: 0.1em; 
+}
 @media (max-width: 900px) {
   .news-card { flex-basis: 260px; height: 340px; }
   .carousel-arrow { width: 38px; height: 38px; font-size: 1.3rem; }
