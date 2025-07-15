@@ -17,7 +17,7 @@ get_header(); ?>
 </section>
 
 <!-- News Carousel Section -->
-<section class="section-news-carousel">
+<section class="section-news-carousel" id="latest-news">
   <div class="container">
     <h2 class="section-title-centered"><?php esc_html_e('Latest news and updates', 'saab'); ?></h2>
     <div class="news-carousel-wrapper">
