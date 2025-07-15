@@ -10,17 +10,27 @@
    CSS Custom Properties (Variables)
    ======================================== */
 :root {
-  /* Colors */
+  /* Primary Colors - Minimalist Black & White */
+  --primary-black: #000000;
+  --primary-white: #FFFFFF;
+  --primary-gray: #F5F5F5;
+  --primary-gray-dark: #E5E5E5;
+  
+  /* Accent Colors - Blue & Yellow Only */
+  --accent-blue: #0000FF;
+  --accent-yellow: #FFD700;
+  
+  /* Legacy color variables for compatibility */
   --brand-yellow: #FFD700;
-  --brand-blue: #1E3A8A;
-  --brand-navy: #10284A;
-  --brand-midnight: #111827;
-  --brand-cream: #FEFEFE;
+  --brand-blue: #0000FF;
+  --brand-navy: #000000;
+  --brand-midnight: #000000;
+  --brand-cream: #F5F5F5;
   --brand-white: #FFFFFF;
-  --brand-gray: #6B7280;
-  --gray-light: #F9FAFB;
-  --gray-medium: #9CA3AF;
-  --gray-dark: #374151;
+  --brand-gray: #E5E5E5;
+  --gray-light: #F5F5F5;
+  --gray-medium: #E5E5E5;
+  --gray-dark: #000000;
   
   /* Typography */
   --font-heading: 'Epilogue', sans-serif;
@@ -80,8 +90,8 @@ body {
   font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.6;
-  color: #333;
-  background: var(--white);
+  color: var(--primary-black);
+  background: var(--primary-white);
 }
 
 /* Typography */
@@ -89,7 +99,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--brand-midnight);
+  color: var(--primary-black);
   margin-bottom: 1rem;
 }
 
@@ -209,46 +219,46 @@ a:focus {
 }
 
 .btn-primary {
-  background: var(--brand-yellow);
-  color: var(--brand-midnight);
-  border-color: var(--brand-yellow);
+  background: var(--primary-white);
+  color: var(--primary-black);
+  border-color: var(--primary-black);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-  background: var(--brand-midnight);
-  color: var(--brand-yellow);
-  border-color: var(--brand-midnight);
+  background: var(--accent-blue);
+  color: var(--primary-white);
+  border-color: var(--accent-blue);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
 .btn-secondary {
-  background: var(--brand-midnight);
-  color: var(--brand-white);
-  border-color: var(--brand-midnight);
+  background: var(--primary-black);
+  color: var(--primary-white);
+  border-color: var(--primary-black);
 }
 
 .btn-secondary:hover,
 .btn-secondary:focus {
-  background: var(--brand-yellow);
-  color: var(--brand-midnight);
-  border-color: var(--brand-yellow);
+  background: var(--accent-yellow);
+  color: var(--primary-black);
+  border-color: var(--accent-yellow);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
 .btn-outline {
   background: transparent;
-  color: var(--brand-white);
-  border-color: var(--brand-white);
+  color: var(--primary-white);
+  border-color: var(--primary-white);
 }
 
 .btn-outline:hover,
 .btn-outline:focus {
-  background: var(--brand-yellow);
-  color: var(--brand-midnight);
-  border-color: var(--brand-yellow);
+  background: var(--accent-yellow);
+  color: var(--primary-black);
+  border-color: var(--accent-yellow);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -669,8 +679,6 @@ a:focus {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin-top: -80px; /* Compensate for fixed header */
-    padding-top: 80px; /* Add padding to prevent content overlap */
     background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 100%);
     transition: background 0.8s ease-in-out;
 }
@@ -689,7 +697,34 @@ a:focus {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: center center;
+    transition: transform 0.5s ease-out;
+}
+
+/* Ensure video is responsive and not distorted */
+.hero-video {
+    min-width: 100%;
+    min-height: 100%;
+}
+
+@media (max-aspect-ratio: 16/9) {
+    .hero-video,
+    .hero-image {
+        object-fit: cover;
+        width: 100%;
+        height: 177.78vh; /* 16:9 aspect ratio */
+        max-height: none;
+    }
+}
+
+@media (min-aspect-ratio: 16/9) {
+    .hero-video,
+    .hero-image {
+        object-fit: cover;
+        width: 177.78vh; /* 16:9 aspect ratio */
+        height: 100%;
+        max-width: none;
+    }
 }
 
 .hero-overlay {
