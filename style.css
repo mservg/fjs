@@ -19,3 +19,6 @@ Tags: custom-post-type, film, artist, portfolio, multilingual, accessibility-rea
 
 /* Import enhanced styles */
 @import url('./assets/css/enhanced-styles.css');
+
+/* Import CPT fixes */
+@import url('./assets/css/cpt-fixes.css');
