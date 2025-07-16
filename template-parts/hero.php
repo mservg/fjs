@@ -35,17 +35,22 @@ if (!$hero_bg_image) {
 <section class="hero-section" id="hero" role="banner">
     <div class="hero-background">
         <?php if ($hero_bg_type === 'video' && $hero_bg_video) : ?>
-            <video class="hero-video" autoplay muted loop playsinline aria-hidden="true">
-                <source src="<?php echo esc_url($hero_bg_video); ?>" type="video/mp4">
-                <?php if ($hero_bg_image) : ?>
-                    <img src="<?php echo esc_url($hero_bg_image); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                <?php endif; ?>
-            </video>
+            <div class="hero-video-container">
+                <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+                    <source src="<?php echo esc_url($hero_bg_video); ?>" type="video/mp4">
+                    Your browser does not support the video tag.
+                    <?php if ($hero_bg_image) : ?>
+                        <img src="<?php echo esc_url($hero_bg_image); ?>" alt="Hero background">
+                    <?php endif; ?>
+                </video>
+            </div>
         <?php elseif ($hero_bg_image) : ?>
-            <img class="hero-image" 
-                 src="<?php echo esc_url($hero_bg_image); ?>" 
-                 alt="<?php echo esc_attr(get_bloginfo('name')); ?>"
-                 loading="eager">
+            <div class="hero-image-container">
+                <img class="hero-image" 
+                     src="<?php echo esc_url($hero_bg_image); ?>" 
+                     alt="Hero background"
+                     loading="eager">
+            </div>
         <?php else : ?>
             <div class="hero-fallback"></div>
         <?php endif; ?>

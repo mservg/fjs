@@ -193,7 +193,7 @@
      * Enhanced hero video functionality
      */
     function initHeroVideo() {
-        const heroVideo = document.querySelector('.hero-video video');
+        const heroVideo = document.querySelector('.hero-video');
         if (!heroVideo) return;
 
         // Handle video load errors
@@ -223,7 +223,11 @@
 
         // Handle video loading
         heroVideo.addEventListener('loadeddata', function() {
-            heroVideo.style.opacity = '1';
+            heroVideo.classList.add('loaded');
+        });
+        
+        heroVideo.addEventListener('canplay', function() {
+            heroVideo.classList.add('loaded');
         });
 
         // Fallback for browsers that don't support autoplay
