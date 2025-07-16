@@ -344,9 +344,7 @@ a:focus {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: transparent;
     transition: all var(--transition-normal);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0;
@@ -355,7 +353,7 @@ a:focus {
 }
 
 .site-header.scrolled {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 }
@@ -445,23 +443,24 @@ a:focus {
 }
 
 /* Hamburger Menu Button */
-.transparent-burger {
+.mobile-menu-toggle {
     background: transparent;
     border: none;
-    padding: 0.5rem;
+    padding: 0.75rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 44px;
     min-height: 44px;
+    border-radius: 8px;
     transition: all var(--transition-normal);
 }
 
-.transparent-burger:hover,
-.transparent-burger:focus {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:focus {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.05);
     outline: none;
 }
 
@@ -490,19 +489,16 @@ a:focus {
 .hamburger-icon .bar3 { top: 18px; }
 
 /* Hamburger to X Animation */
-.menu-overlay.open ~ .site-header .hamburger-icon .bar1,
-.menu-overlay.open + .site-header .hamburger-icon .bar1 {
+.mobile-menu-toggle.menu-open .hamburger-icon .bar1 {
     transform: rotate(45deg) translate(6px, 6px);
 }
 
-.menu-overlay.open ~ .site-header .hamburger-icon .bar2,
-.menu-overlay.open + .site-header .hamburger-icon .bar2 {
+.mobile-menu-toggle.menu-open .hamburger-icon .bar2 {
     opacity: 0;
     transform: scale(0);
 }
 
-.menu-overlay.open ~ .site-header .hamburger-icon .bar3,
-.menu-overlay.open + .site-header .hamburger-icon .bar3 {
+.mobile-menu-toggle.menu-open .hamburger-icon .bar3 {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
@@ -1012,7 +1008,7 @@ a:focus {
 }
 
 /* Focus styles for keyboard navigation */
-.transparent-burger:focus-visible,
+.mobile-menu-toggle:focus-visible,
 .menu-overlay-close:focus-visible,
 .scroll-down-btn:focus-visible {
     outline: 3px solid var(--brand-yellow);

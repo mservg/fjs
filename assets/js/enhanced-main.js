@@ -74,7 +74,7 @@
      */
     function initEnhancedMenuToggle() {
         console.log('Initializing enhanced menu toggle...');
-        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const menuToggle = document.querySelector('#mobile-menu-toggle');
         const menuOverlay = document.getElementById('menu-overlay');
         const menuClose = document.getElementById('menu-overlay-close');
         const body = document.body;
@@ -99,6 +99,7 @@
             menuOverlay.setAttribute('aria-hidden', 'false');
             menuOverlay.classList.add('open');
             menuToggle.setAttribute('aria-expanded', 'true');
+            menuToggle.classList.add('menu-open');
             body.style.overflow = 'hidden';
             
             // Focus first element in menu
@@ -118,6 +119,7 @@
             menuOverlay.setAttribute('aria-hidden', 'true');
             menuOverlay.classList.remove('open');
             menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.classList.remove('menu-open');
             body.style.overflow = '';
             
             // Return focus to menu toggle
@@ -158,15 +160,17 @@
         }
 
         // Event listeners
-        menuToggle.addEventListener('click', function(e) {
-            console.log('Menu toggle clicked!');
-            e.preventDefault();
-            if (menuOverlay.classList.contains('open')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function(e) {
+                console.log('Menu toggle clicked!');
+                e.preventDefault();
+                if (menuOverlay.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+        }
 
         if (menuClose) {
             menuClose.addEventListener('click', function(e) {
