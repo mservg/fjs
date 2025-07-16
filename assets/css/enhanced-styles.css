@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Enhanced Styles for Jocelyne Saab Theme
  * Updated header layout and hero section with fullscreen video
  * Author: Karl Serag (karlserag)
@@ -16,17 +16,19 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: all var(--transition-normal);
     padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .site-header.scrolled {
-    background: rgba(0, 0, 0, 0.9);
+    background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-flex {
@@ -105,55 +107,64 @@
     color: var(--brand-yellow);
 }
 
-/* Hamburger Menu Button */
+/* Hamburger Menu Button - Improved Design */
 .transparent-burger {
     background: transparent;
-    border: none;
-    padding: 0.5rem;
+    border: 2px solid transparent;
+    padding: 0.75rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
+    min-width: 48px;
+    min-height: 48px;
+    border-radius: 8px;
     transition: all var(--transition-normal);
 }
 
 .transparent-burger:hover,
 .transparent-burger:focus {
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
+    border-color: rgba(255, 255, 255, 0.2);
     outline: none;
+    transform: scale(1.05);
 }
 
 .hamburger-icon {
     position: relative;
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 .hamburger-icon .bar {
-    position: absolute;
-    width: 24px;
-    height: 2px;
-    background: var(--brand-white);
-    border-radius: 1px;
-    transition: all var(--transition-normal);
+    width: 26px;
+    height: 3px;
+    background: var(--primary-white);
+    border-radius: 2px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     transform-origin: center;
 }
 
-.hamburger-icon .bar1 { top: 6px; }
-.hamburger-icon .bar2 { top: 12px; }
-.hamburger-icon .bar3 { top: 18px; }
+.hamburger-icon .bar1 {
+    transform: translateY(0);
+}
 
-/* Hamburger to X Animation */
+.hamburger-icon .bar2 {
+    transform: translateY(0);
+}
+
+.hamburger-icon .bar3 {
+    transform: translateY(0);
+}
+
+/* Hamburger to X Animation - Improved */
 .menu-overlay.open ~ .site-header .hamburger-icon .bar1,
 .menu-overlay.open + .site-header .hamburger-icon .bar1 {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: translateY(8px) rotate(45deg);
 }
 
 .menu-overlay.open ~ .site-header .hamburger-icon .bar2,
@@ -164,7 +175,7 @@
 
 .menu-overlay.open ~ .site-header .hamburger-icon .bar3,
 .menu-overlay.open + .site-header .hamburger-icon .bar3 {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ========================================
@@ -284,9 +295,9 @@
 
 .overlay-nav-menu a:hover,
 .overlay-nav-menu a:focus {
-    color: var(--brand-yellow);
-    border-color: var(--brand-yellow);
-    background: rgba(255, 215, 0, 0.1);
+    color: var(--primary-black);
+    border-color: var(--accent-yellow);
+    background: var(--accent-yellow);
     transform: translateY(-2px);
 }
 
@@ -313,26 +324,16 @@
 
 .menu-language-switcher a:hover,
 .menu-language-switcher a.current-lang {
-    background: var(--brand-white);
-    color: var(--brand-midnight);
+    background: var(--accent-blue);
+    color: var(--primary-white);
+    border-color: var(--accent-blue);
 }
 
 /* ========================================
    Enhanced Hero Section
    ======================================== */
 
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    margin-top: -80px; /* Compensate for fixed header */
-    padding-top: 80px; /* Add padding to prevent content overlap */
-}
+/* Hero styles are now in main.css for consistency */
 
 .hero-background {
     position: absolute;
@@ -679,9 +680,9 @@
 }
 
 .overlay-nav-menu a:focus-visible {
-    outline: 3px solid var(--brand-yellow);
+    outline: 3px solid var(--accent-blue);
     outline-offset: 2px;
-    border-color: var(--brand-yellow);
+    border-color: var(--accent-blue);
 }
 
 /* High contrast mode support */
