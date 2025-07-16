@@ -60,7 +60,7 @@ if (!$hero_bg_image) {
                 <div class="hero-subtitle"><?php bloginfo('description'); ?></div>
                 <?php if ($hero_cta_text && $hero_cta_url) : ?>
                     <div class="hero-cta">
-                        <a href="<?php echo esc_url($hero_cta_url); ?>" class="btn btn-outline">
+                        <a href="#latest-news-updates" class="btn btn-outline smooth-scroll-btn" data-target="latest-news-updates">
                             <?php echo esc_html($hero_cta_text); ?>
                             <span class="sr-only" style="position:absolute;left:-9999px;">Learn more about our work</span>
                         </a>
@@ -72,7 +72,7 @@ if (!$hero_bg_image) {
     
     <!-- Scroll indicator -->
     <div class="hero-scroll-indicator" aria-hidden="true">
-        <button class="scroll-down-btn" onclick="document.getElementById('featured-films').scrollIntoView({behavior: 'smooth'})" aria-label="<?php esc_attr_e('Scroll down to content', 'saab'); ?>">
+        <button class="scroll-down-btn" onclick="document.getElementById('latest-news-updates').scrollIntoView({behavior: 'smooth'})" aria-label="<?php esc_attr_e('Scroll down to content', 'saab'); ?>">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>

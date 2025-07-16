@@ -18,11 +18,11 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <a class="skip-link screen-reader-text" href="#main"><?php esc_html_e('Skip to content', 'saab'); ?></a>
-<header class="site-header" id="site-header" role="banner">
+<header class="site-header transparent-header" id="site-header" role="banner">
     <div class="container">
         <div class="header-content header-flex">
             <div class="header-burger">
-                <button class="mobile-menu-toggle transparent-burger" id="mobile-menu-toggle" aria-expanded="false" aria-controls="menu-overlay" aria-label="<?php esc_attr_e('Toggle Navigation Menu', 'saab'); ?>">
+                <button class="hamburger mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false" aria-controls="menu-overlay" aria-label="<?php esc_attr_e('Toggle Navigation Menu', 'saab'); ?>">
                     <span class="hamburger-icon" aria-hidden="true">
                         <span class="bar bar1"></span>
                         <span class="bar bar2"></span>
