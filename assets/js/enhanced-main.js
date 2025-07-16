@@ -100,6 +100,7 @@
             menuOverlay.classList.add('open');
             menuToggle.setAttribute('aria-expanded', 'true');
             body.style.overflow = 'hidden';
+            body.classList.add('menu-open'); // Add class for CSS fallback
             
             // Focus first element in menu
             if (firstFocusableElement) {
@@ -119,6 +120,7 @@
             menuOverlay.classList.remove('open');
             menuToggle.setAttribute('aria-expanded', 'false');
             body.style.overflow = '';
+            body.classList.remove('menu-open'); // Remove class for CSS fallback
             
             // Return focus to menu toggle
             menuToggle.focus();
