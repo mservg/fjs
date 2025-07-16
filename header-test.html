@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header & Menu Test</title>
+    <style>
+        /* Basic styles for testing */
+        body { margin: 0; padding: 0; height: 200vh; font-family: Arial, sans-serif; }
+        
+        /* Include our header styles */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0;
+        }
+        
+        .site-header.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 60px;
+            padding: 0.5rem 1rem;
+        }
+        
+        .mobile-menu-toggle {
+            background: transparent;
+            border: none;
+            padding: 0.75rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-toggle:hover,
+        .mobile-menu-toggle:focus {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+            outline: none;
+        }
+        
+        .hamburger-icon {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hamburger-icon .bar {
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: #FFD700;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+        
+        .hamburger-icon .bar1 { top: 6px; }
+        .hamburger-icon .bar2 { top: 12px; }
+        .hamburger-icon .bar3 { top: 18px; }
+        
+        /* Hamburger animation */
+        .mobile-menu-toggle.menu-open .hamburger-icon .bar1 {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .mobile-menu-toggle.menu-open .hamburger-icon .bar2 {
+            opacity: 0;
+            transform: scale(0);
+        }
+        
+        .mobile-menu-toggle.menu-open .hamburger-icon .bar3 {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+        
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .content-section {
+            padding: 2rem;
+            margin: 2rem 0;
+            background: #f5f5f5;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: white;
+            text-decoration: none;
+            border: 2px solid white;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #FFD700;
+            color: #1a1a2e;
+            border-color: #FFD700;
+        }
+        
+        .smooth-scroll-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section-highlight {
+            animation: highlightSection 2s ease-in-out;
+        }
+        
+        @keyframes highlightSection {
+            0%, 100% { background-color: transparent; }
+            50% { background-color: rgba(255, 215, 0, 0.1); }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header" id="site-header">
+        <div class="header-content">
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-expanded="false">
+                <div class="hamburger-icon">
+                    <span class="bar bar1"></span>
+                    <span class="bar bar2"></span>
+                    <span class="bar bar3"></span>
+                </div>
+            </button>
+            <div>Jocelyne Saab Association</div>
+        </div>
+    </header>
+    
+    <section class="hero-section">
+        <div>
+            <h1>Jocelyne Saab Association</h1>
+            <p>Filmmaker & Artist</p>
+            <a href="#featured-films" class="btn smooth-scroll-btn" data-target="featured-films">Explore Our Work</a>
+        </div>
+    </section>
+    
+    <section class="content-section" id="featured-films">
+        <h2>Featured Films</h2>
+        <p>This is the featured films section. Click the hamburger menu to test the animation.</p>
+        <p>Scroll up and down to test header transparency.</p>
+    </section>
+    
+    <section class="content-section" id="latest-news">
+        <h2>Latest News</h2>
+        <p>This section demonstrates smooth scrolling functionality.</p>
+        <p>The header should become solid black when scrolled and transparent over the hero.</p>
+    </section>
+    
+    <script>
+        // Test our hamburger menu functionality
+        const menuToggle = document.querySelector('#mobile-menu-toggle');
+        let isOpen = false;
+        
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                isOpen = !isOpen;
+                
+                if (isOpen) {
+                    menuToggle.classList.add('menu-open');
+                    menuToggle.setAttribute('aria-expanded', 'true');
+                    console.log('Menu opened');
+                } else {
+                    menuToggle.classList.remove('menu-open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                    console.log('Menu closed');
+                }
+            });
+        }
+        
+        // Test header transparency on scroll
+        const header = document.getElementById('site-header');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        function updateHeader() {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+        
+        function requestHeaderUpdate() {
+            if (!ticking) {
+                requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        }
+        
+        window.addEventListener('scroll', requestHeaderUpdate, { passive: true });
+        
+        // Test smooth scroll functionality
+        document.querySelectorAll('a[href^="#"], .smooth-scroll-btn').forEach(link => {
+            link.addEventListener('click', function(e) {
+                let targetId;
+                
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    targetId = this.getAttribute('href').substring(1);
+                } else if (this.getAttribute('data-target')) {
+                    targetId = this.getAttribute('data-target');
+                } else {
+                    return;
+                }
+                
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    const headerHeight = 80;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 40;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Add highlight effect
+                    targetElement.classList.add('section-highlight');
+                    setTimeout(() => {
+                        targetElement.classList.remove('section-highlight');
+                    }, 2000);
+                    
+                    console.log('Smooth scrolled to:', targetId);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
