@@ -74,7 +74,7 @@
      */
     function initEnhancedMenuToggle() {
         console.log('Initializing enhanced menu toggle...');
-        const menuToggle = document.getElementById('mobile-menu-toggle');
+        const menuToggle = document.querySelector('#mobile-menu-toggle');
         const menuOverlay = document.getElementById('menu-overlay');
         const menuClose = document.getElementById('menu-overlay-close');
         const body = document.body;
@@ -99,6 +99,7 @@
             menuOverlay.setAttribute('aria-hidden', 'false');
             menuOverlay.classList.add('open');
             menuToggle.setAttribute('aria-expanded', 'true');
+            menuToggle.classList.add('menu-open');
             body.style.overflow = 'hidden';
             
             // Focus first element in menu
@@ -118,6 +119,7 @@
             menuOverlay.setAttribute('aria-hidden', 'true');
             menuOverlay.classList.remove('open');
             menuToggle.setAttribute('aria-expanded', 'false');
+            menuToggle.classList.remove('menu-open');
             body.style.overflow = '';
             
             // Return focus to menu toggle
@@ -158,15 +160,17 @@
         }
 
         // Event listeners
-        menuToggle.addEventListener('click', function(e) {
-            console.log('Menu toggle clicked!');
-            e.preventDefault();
-            if (menuOverlay.classList.contains('open')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function(e) {
+                console.log('Menu toggle clicked!');
+                e.preventDefault();
+                if (menuOverlay.classList.contains('open')) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+        }
 
         if (menuClose) {
             menuClose.addEventListener('click', function(e) {
@@ -189,7 +193,7 @@
      * Enhanced hero video functionality
      */
     function initHeroVideo() {
-        const heroVideo = document.querySelector('.hero-video video');
+        const heroVideo = document.querySelector('.hero-video');
         if (!heroVideo) return;
 
         // Handle video load errors
@@ -219,7 +223,11 @@
 
         // Handle video loading
         heroVideo.addEventListener('loadeddata', function() {
-            heroVideo.style.opacity = '1';
+            heroVideo.classList.add('loaded');
+        });
+        
+        heroVideo.addEventListener('canplay', function() {
+            heroVideo.classList.add('loaded');
         });
 
         // Fallback for browsers that don't support autoplay
@@ -294,9 +302,20 @@
      * Enhanced smooth scrolling
      */
     function initSmoothScroll() {
-        document.querySelectorAll('a[href^="#"]').forEach(link => {
+        // Handle smooth scroll links
+        document.querySelectorAll('a[href^="#"], .smooth-scroll-btn').forEach(link => {
             link.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href').substring(1);
+                let targetId;
+                
+                // Get target from href or data-target
+                if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                    targetId = this.getAttribute('href').substring(1);
+                } else if (this.getAttribute('data-target')) {
+                    targetId = this.getAttribute('data-target');
+                } else {
+                    return;
+                }
+                
                 const targetElement = document.getElementById(targetId);
                 
                 if (targetElement) {
@@ -304,15 +323,26 @@
                     
                     const header = document.getElementById('site-header');
                     const headerHeight = header ? header.offsetHeight : 80;
-                    const targetPosition = targetElement.offsetTop - headerHeight - 20;
+                    const targetPosition = targetElement.offsetTop - headerHeight - 40;
+                    
+                    // Add smooth scroll animation
+                    targetElement.style.scrollMarginTop = (headerHeight + 40) + 'px';
                     
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
 
-                    // Update URL hash
-                    history.pushState(null, null, '#' + targetId);
+                    // Update URL hash only for actual hash links
+                    if (this.getAttribute('href') && this.getAttribute('href').startsWith('#')) {
+                        history.pushState(null, null, '#' + targetId);
+                    }
+                    
+                    // Add visual feedback
+                    targetElement.classList.add('scroll-target-highlight');
+                    setTimeout(() => {
+                        targetElement.classList.remove('scroll-target-highlight');
+                    }, 2000);
                 }
             });
         });
