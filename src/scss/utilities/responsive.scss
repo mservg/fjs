@@ -1,0 +1,125 @@
+// ========================================
+// Responsive Design Utilities
+// ========================================
+
+// Responsive visibility
+@include mobile {
+  .hide-mobile { display: none !important; }
+}
+
+@include tablet {
+  .hide-tablet { display: none !important; }
+}
+
+@include desktop {
+  .hide-desktop { display: none !important; }
+  .show-mobile { display: none !important; }
+}
+
+.show-mobile {
+  @include tablet {
+    display: none !important;
+  }
+  @include desktop {
+    display: none !important;
+  }
+}
+
+// Responsive text sizes
+.responsive-text {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+}
+
+.responsive-title {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.responsive-hero-title {
+  font-size: clamp(2rem, 6vw, 4rem);
+}
+
+// Container responsive adjustments
+.container {
+  @include mobile {
+    padding: 0 1rem;
+  }
+
+  @include tablet {
+    padding: 0 2rem;
+  }
+
+  @include desktop {
+    padding: 0 2rem;
+  }
+
+  @include large {
+    padding: 0;
+  }
+}
+
+// Responsive padding for sections
+.section {
+  @include mobile {
+    padding: 2rem 0;
+  }
+
+  @include tablet {
+    padding: 3rem 0;
+  }
+
+  @include desktop {
+    padding: 4rem 0;
+  }
+}
+
+// Responsive grid gaps
+.responsive-grid {
+  display: grid;
+  gap: 1rem;
+
+  @include tablet {
+    gap: 1.5rem;
+  }
+
+  @include desktop {
+    gap: 2rem;
+  }
+}
+
+// Fix for mobile overflow issues
+@include mobile {
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  // Fix header spacing on mobile
+  .site-header {
+    padding: 0.75rem 0;
+
+    .header-flex {
+      padding: 0 1rem;
+    }
+  }
+
+  // Adjust hero sections for mobile
+  .hero-section,
+  .film-hero-archive-style,
+  .archive-hero {
+    min-height: 50vh;
+    padding: 4rem 0 2rem;
+  }
+
+  // Mobile-specific carousel adjustments
+  .news-carousel {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .carousel-arrow {
+    display: none; // Hide arrows on mobile, rely on touch scrolling
+  }
+}

@@ -1,0 +1,44 @@
+// Container and grid system
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 1rem;
+
+  @include mobile {
+    padding: 0 0.75rem;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+
+  &.grid-12 {
+    grid-template-columns: repeat(12, 1fr);
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.section {
+  padding: 4rem 0;
+
+  @include mobile {
+    padding: 2rem 0;
+  }
+
+  &.section-white {
+    background: $brand-white;
+  }
+
+  &.section-cream {
+    background: $brand-cream;
+  }
+
+  &.section-dark {
+    background: $brand-midnight;
+    color: $brand-white;
+  }
+}

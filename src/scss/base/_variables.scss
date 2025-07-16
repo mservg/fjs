@@ -1,0 +1,101 @@
+// ========================================
+// CSS Custom Properties (Variables) 
+// ========================================
+
+:root {
+  // Colors
+  --brand-yellow: #FFD700;
+  --brand-blue: #1E3A8A;
+  --brand-navy: #10284A;
+  --brand-midnight: #111827;
+  --brand-cream: #FEFEFE;
+  --brand-white: #FFFFFF;
+  --brand-gray: #6B7280;
+  --gray-light: #F9FAFB;
+  --gray-medium: #9CA3AF;
+  --gray-dark: #374151;
+  
+  // Typography
+  --font-heading: 'Epilogue', sans-serif;
+  --font-body: 'Lora', serif;
+  
+  // Spacing
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  --spacing-2xl: 4rem;
+  --spacing-3xl: 6rem;
+  
+  // Breakpoints
+  --bp-mobile: 320px;
+  --bp-tablet: 768px;
+  --bp-desktop: 1024px;
+  --bp-large: 1200px;
+  
+  // Layout
+  --container-max-width: 1200px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  
+  // Shadows
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  // Transitions
+  --transition-fast: 0.15s ease-in-out;
+  --transition-normal: 0.3s ease-in-out;
+  --transition-slow: 0.5s ease-in-out;
+}
+
+// SCSS Variables for easier usage
+$brand-yellow: #FFD700;
+$brand-blue: #1E3A8A;
+$brand-navy: #10284A;
+$brand-midnight: #111827;
+$brand-cream: #FEFEFE;
+$brand-white: #FFFFFF;
+$brand-gray: #6B7280;
+$gray-light: #F9FAFB;
+$gray-medium: #9CA3AF;
+$gray-dark: #374151;
+
+$font-heading: 'Epilogue', sans-serif;
+$font-body: 'Lora', serif;
+
+$container-max-width: 1200px;
+$border-radius: 8px;
+$border-radius-lg: 12px;
+
+$transition-fast: 0.15s ease-in-out;
+$transition-normal: 0.3s ease-in-out;
+$transition-slow: 0.5s ease-in-out;
+
+// Breakpoint mixins
+@mixin mobile {
+  @media (max-width: 767px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: 768px) and (max-width: 1023px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin large {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}

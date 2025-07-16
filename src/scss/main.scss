@@ -1,0 +1,38 @@
+// Main SCSS file for Jocelyne Saab Theme
+// This file imports all other SCSS modules
+
+// Import variables and mixins first (must be first)
+@import 'base/variables';
+
+// Import base styles that depend on variables
+@import 'base/reset';
+@import 'base/typography';
+
+// Layout components
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/grid';
+
+// Components
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/carousel';
+@import 'components/hero';
+@import 'components/navigation';
+
+// Pages and templates
+@import 'pages/archive';
+@import 'pages/single';
+@import 'pages/front-page';
+
+// Custom Post Types
+@import 'cpt/films';
+@import 'cpt/news';
+@import 'cpt/screenings';
+@import 'cpt/workshops';
+@import 'cpt/partners';
+@import 'cpt/publications';
+
+// Utilities (must be last)
+@import 'utilities/helpers';
+@import 'utilities/responsive';
