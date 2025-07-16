@@ -65,7 +65,7 @@ if (!$hero_bg_image) {
                 <div class="hero-subtitle"><?php bloginfo('description'); ?></div>
                 <?php if ($hero_cta_text && $hero_cta_url) : ?>
                     <div class="hero-cta">
-                        <a href="<?php echo esc_url($hero_cta_url); ?>" class="btn btn-outline">
+                        <a href="#featured-films" class="btn btn-outline smooth-scroll-btn" data-target="featured-films">
                             <?php echo esc_html($hero_cta_text); ?>
                             <span class="sr-only" style="position:absolute;left:-9999px;">Learn more about our work</span>
                         </a>
