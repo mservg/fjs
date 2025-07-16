@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jocelyne Saab Theme Test</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/enhanced-styles.css">
+</head>
+<body>
+    <!-- Header from header.php -->
+    <header class="site-header" id="site-header" role="banner">
+        <div class="container">
+            <div class="header-content header-flex">
+                <div class="header-burger">
+                    <button class="mobile-menu-toggle transparent-burger" id="mobile-menu-toggle" aria-expanded="false" aria-controls="menu-overlay" aria-label="Toggle Navigation Menu">
+                        <span class="hamburger-icon" aria-hidden="true">
+                            <span class="bar bar1"></span>
+                            <span class="bar bar2"></span>
+                            <span class="bar bar3"></span>
+                        </span>
+                    </button>
+                </div>
+                <div class="header-logo">
+                    <a href="/" class="logo-link">
+                        <div class="logo-placeholder">
+                            <span class="logo-text">JS</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="header-title">
+                    <a href="/" class="site-title-link">
+                        <span class="site-title-text">Jocelyne Saab Association</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav id="menu-overlay" class="menu-overlay" aria-hidden="true" tabindex="-1" role="navigation">
+            <div class="menu-overlay-inner">
+                <button class="menu-overlay-close" id="menu-overlay-close" aria-label="Close Menu">
+                    <span class="close-icon" aria-hidden="true">
+                        <span class="close-line close-line1"></span>
+                        <span class="close-line close-line2"></span>
+                    </span>
+                </button>
+                <div class="menu-overlay-menu animated-menu">
+                    <ul class="nav-menu overlay-nav-menu">
+                        <li><a href="/films/">Films</a></li>
+                        <li><a href="/news/">News</a></li>
+                        <li><a href="/workshops/">Workshops</a></li>
+                        <li><a href="/publications/">Publications</a></li>
+                        <li><a href="/screenings/">Screenings</a></li>
+                        <li><a href="/partners/">Partners</a></li>
+                    </ul>
+                    <div class="language-switcher menu-language-switcher" role="navigation" aria-label="Language Selection">
+                        <a href="/en/" class="current-lang" hreflang="en">EN</a>
+                        <a href="/fr/" hreflang="fr">FR</a>
+                        <a href="/ar/" hreflang="ar">AR</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main" class="site-main" role="main">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="hero-background">
+                <video class="hero-video" autoplay muted loop>
+                    <source src="/assets/video/hero-video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="rotating-text">
+                        <span class="rotating-text-prefix">Jocelyne Saab was a</span>
+                        <span class="rotating-text-words">
+                            <span class="word active">filmmaker</span>
+                        </span>
+                    </h1>
+                    <p class="hero-description">Pioneering Lebanese filmmaker and artist whose groundbreaking work documented the Middle East with uncompromising vision and poetic sensitivity.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test CPT Archive Sections -->
+        <section class="section section-white">
+            <div class="container">
+                <h2 class="section-title-centered">Custom Post Types Overview</h2>
+                
+                <!-- Films Archive Preview -->
+                <div class="cpt-preview">
+                    <h3>Films Archive</h3>
+                    <div class="films-grid">
+                        <div class="film-card">
+                            <div class="film-poster" style="background: #333; height: 300px; display: flex; align-items: center; justify-content: center; color: white;">Film 1</div>
+                            <h4>Sample Film Title</h4>
+                            <p>Documentary • 2020 • 90 min</p>
+                        </div>
+                        <div class="film-card">
+                            <div class="film-poster" style="background: #333; height: 300px; display: flex; align-items: center; justify-content: center; color: white;">Film 2</div>
+                            <h4>Another Film Title</h4>
+                            <p>Fiction • 2019 • 120 min</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Archive Preview -->
+                <div class="cpt-preview">
+                    <h3>News Archive</h3>
+                    <div class="news-carousel-wrapper">
+                        <button class="carousel-arrow carousel-arrow-left" aria-label="Previous News"></button>
+                        <div class="news-carousel" id="news-carousel">
+                            <div class="news-card">
+                                <div style="background: #333; height: 200px; display: flex; align-items: center; justify-content: center; color: white;">News 1</div>
+                                <div style="padding: 1rem;">
+                                    <h4>Latest News Title</h4>
+                                    <p>This is sample news content for testing.</p>
+                                </div>
+                            </div>
+                            <div class="news-card">
+                                <div style="background: #333; height: 200px; display: flex; align-items: center; justify-content: center; color: white;">News 2</div>
+                                <div style="padding: 1rem;">
+                                    <h4>Another News Title</h4>
+                                    <p>This is another sample news content.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-arrow carousel-arrow-right" aria-label="Next News"></button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const menuOverlayClose = document.getElementById('menu-overlay-close');
+
+        function toggleMenu() {
+            menuOverlay.classList.toggle('open');
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMenu);
+        menuOverlayClose.addEventListener('click', toggleMenu);
+
+        // News carousel
+        function initCarouselArrows() {
+            const carousel = document.getElementById('news-carousel');
+            const leftArrow = document.querySelector('.carousel-arrow-left');
+            const rightArrow = document.querySelector('.carousel-arrow-right');
+            
+            if (carousel && leftArrow && rightArrow) {
+                function scrollCarousel(dir) {
+                    const card = carousel.querySelector('.news-card');
+                    if (!card) return;
+                    const scrollAmount = card.offsetWidth + 32;
+                    carousel.scrollBy({ left: dir * scrollAmount, behavior: 'smooth' });
+                }
+                
+                leftArrow.addEventListener('click', () => scrollCarousel(-1));
+                rightArrow.addEventListener('click', () => scrollCarousel(1));
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', initCarouselArrows);
+    </script>
+</body>
+</html>
