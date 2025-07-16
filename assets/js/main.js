@@ -29,6 +29,7 @@
         initWorkshopFilters();
         initNewsCarousel();
         initFilmArchiveFiltering();
+        initSmoothScrolling();
     }
 
     /**
@@ -1018,6 +1019,34 @@ if (typeof saabAjax !== 'undefined') {
                         window.saabTheme.showFormMessage(grid.parentElement, saabAjax.strings.error || 'An error occurred while filtering.', 'error');
                     }
                 });
+            });
+        });
+    }
+
+    /**
+     * Initialize smooth scrolling for anchor links
+     */
+    function initSmoothScrolling() {
+        // Add smooth scrolling behavior to all anchor links pointing to sections
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a[href^="#"]');
+            if (!target) return;
+            
+            const href = target.getAttribute('href');
+            if (href === '#' || href === '#top') return;
+            
+            const targetElement = document.querySelector(href);
+            if (!targetElement) return;
+            
+            e.preventDefault();
+            
+            // Calculate offset for fixed header
+            const headerHeight = document.getElementById('site-header')?.offsetHeight || 0;
+            const targetPosition = targetElement.offsetTop - headerHeight - 20; // 20px extra padding
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
             });
         });
     }
